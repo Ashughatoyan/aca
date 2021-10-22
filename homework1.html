@@ -1,0 +1,198 @@
+<script>
+
+/*
+1.Create a function that takes an array and a string as arguments and return the index of the string.
+
+findIndex(["hi", "edabit", "fgh", "abc"], "fgh") ➞ 2
+
+findIndex(["Red", "blue", "Blue", "Green"], "blue") ➞ 1
+
+findIndex(["a", "g", "y", "d"], "d") ➞ 3
+
+findIndex(["Pineapple", "Orange", "Grape", "Apple"], "Pineapple") ➞ 0
+*/
+
+console.log('__________1__________');
+
+function findIndex(arr,str){return arr.indexOf(str)};
+
+console.log(findIndex(["hi", "edabit", "fgh", "abc"], "fgh"))
+
+console.log(findIndex(["Red", "blue", "Blue", "Green"], "blue"))
+
+console.log(findIndex(["a", "g", "y", "d"], "d"))
+
+console.log(findIndex(["Pineapple", "Orange", "Grape", "Apple"], "Pineapple"))
+
+/*
+2.Create a function that takes in a word and determines whether or not it is plural. A plural word is one that ends in "s".
+
+isPlural("changes") ➞ true
+
+isPlural("change") ➞ false
+
+isPlural("dudes") ➞ true
+
+isPlural("magic") ➞ false
+*/
+console.log('__________2__________');
+
+function isPlural(str){
+	let tag;
+	if(str.lastIndexOf('s') === -1)
+		{
+			tag = false
+		}
+		else if(str.lastIndexOf('s') >= 0)
+		{
+			tag = true
+		};
+		return tag;
+};
+
+console.log(isPlural("changes"))
+
+console.log(isPlural("change"))
+
+console.log(isPlural("dudes"))
+
+console.log(isPlural("magic"))
+
+/*
+3.Create a function that takes two strings as arguments and return either true or false depending on whether the total number of characters in the first string is equal to the total number of characters in the second string.
+
+comp("AB", "CD") ➞ true
+
+comp("ABC", "DE") ➞ false
+
+comp("hello", "edabit") ➞ false
+*/
+
+console.log('__________3__________');
+
+function comp(str1,str2){
+	let tag;
+	if(str1.length === str2.length)
+	{
+		tag = true
+	}
+	else if(str1.length !== str2.length)
+	{
+		tag = false
+	};
+	return tag;
+}
+
+console.log(comp("AB", "CD"))
+
+console.log(comp("ABC", "DE"))
+
+console.log(comp("hello", "edabit"))
+
+/*
+4.Create a function that takes an array of names and returns an array where only the first letter of each name is capitalized.
+
+capMe(["mavis", "senaida", "letty"]) ➞ ["Mavis", "Senaida", "Letty"]
+
+capMe(["samuel", "MABELLE", "letitia", "meridith"]) ➞ ["Samuel", "Mabelle", "Letitia", "Meridith"]
+
+capMe(["Slyvia", "Kristal", "Sharilyn", "Calista"]) ➞ ["Slyvia", "Kristal", "Sharilyn", "Calista"]
+
+Don't change the order of the original array.
+Notice in the second example above, "MABELLE" is returned as "Mabelle".
+*/
+
+console.log('__________4__________');
+
+function capMe(arr){
+	let tag = '';
+	for(let i=0;i<arr.length;i++)
+	{
+		tag = arr[i].charAt(0).toUpperCase() + arr[i].slice(1).toLowerCase()
+		arr[i] = tag;
+	}
+	return arr
+}
+
+console.log(capMe(["mavis", "senaida", "letty"]))
+
+console.log(capMe(["samuel", "MABELLE", "letitia", "meridith"]))
+
+console.log(capMe(["Slyvia", "Kristal", "Sharilyn", "Calista"]))
+
+/*
+5.Create a function that takes a string as an argument and returns a coded (h4ck3r 5p34k) version of the string.
+
+hackerSpeak("javascript is cool") ➞ "j4v45cr1pt 15 c00l"
+
+hackerSpeak("programming is fun") ➞ "pr0gr4mm1ng 15 fun"
+
+hackerSpeak("become a coder") ➞ "b3c0m3 4 c0d3r"
+
+In order to work properly, the function should replace all "a"s with 4, "e"s with 3, "i"s with 1, "o"s with 0, and "s"s with 5.
+*/
+
+console.log('__________5__________');
+
+function hackerSpeak(str){
+	let arr=[];
+	for(let i =0;i< str.length;i++){
+		arr[i] = str[i];
+		if(str[i] === 'a'){arr[i] = '4'}
+		else if(str[i] === 'e'){arr[i] = '3'}
+		else if(str[i] === 'i'){arr[i] = '1'}
+		else if(str[i] === 'o'){arr[i] = '0'}
+		else if(str[i] === 's'){arr[i] = '5'}
+	}
+	str ='';
+	for(let i=0;i<arr.length;i++){str = str + arr[i]}
+	return str
+}
+
+console.log(hackerSpeak("javascript is cool"))
+
+console.log(hackerSpeak("programming is fun"))
+
+console.log(hackerSpeak("become a coder"))
+
+/*
+https://edabit.com/challenge/5sdtyMNdLw2FK4fHp 
+6.Write a function that, given the start startNum and end endNum values, return an array containing all the numbers inclusive to that range. See examples below.
+
+inclusiveArray(1, 5) ➞ [1, 2, 3, 4, 5]
+
+inclusiveArray(2, 8) ➞ [2, 3, 4, 5, 6, 7, 8]
+
+inclusiveArray(10, 20) ➞ [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+
+inclusiveArray(17, 5) ➞ [17]
+
+The numbers in the array are sorted in ascending order.
+If startNum is greater than endNum, return an array with the higher value. See example #4.
+*/
+
+console.log('__________6__________');
+
+function inclusiveArray(startNum,endNum)
+{
+	let arr=[];
+	if(startNum < endNum)
+	{
+		for(let i=startNum;i<=endNum;i++){arr.push(i)};
+	}
+	else
+	{
+		arr = startNum;
+	}
+	return arr
+}
+
+console.log(inclusiveArray(1, 5))
+
+console.log(inclusiveArray(2, 8))
+
+console.log(inclusiveArray(10, 20))
+
+console.log(inclusiveArray(17, 5))
+
+</script>

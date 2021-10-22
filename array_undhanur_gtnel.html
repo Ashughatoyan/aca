@@ -1,0 +1,25 @@
+<script>
+function takecommonnumber_2(arr){
+	for (let i = 0; i < arr.length-1; i++){
+		for (let j = i+1; j < arr.length; j++){
+			if(arr[i] === arr[j]){
+				arr[i] = arr[arr.length-1];
+      			arr.length = arr.length-1;
+			}
+		}
+	}
+  
+  for (let i = arr.length-1; i >= 0; i--){
+		if(arr[i] === '_'){
+    	arr[i] = arr[arr.length-1];
+      arr.length = arr.length-1;
+    }
+	}
+  
+  
+	return arr;
+	}
+
+
+console.log(takecommonnumber_2([3,2,1,1,0,0,4,3,9,10]));
+</script>
