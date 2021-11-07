@@ -1,0 +1,119 @@
+<script>
+//1
+console.log('________1________');
+
+console.log(testFairness([[1, 2], [2, 1]], [[2, 2]]))
+
+console.log(testFairness([[1, 2], [2, 1]], [[2, 2], [4, 4]]))
+
+console.log(testFairness([[2, 2], [2, 2], [2, 2], [2, 2]], [[4, 4]]))
+
+console.log(testFairness([[1, 5], [6, 3], [1, 1]], [[7, 1], [2, 2], [1, 1]]))
+
+function testFairness(arr_l,arr_w){
+	let total_l = [];
+	let total_w = [];
+	arr_l.forEach((element,index,array) => {total_l[index] = array[index][0]*array[index][1]});
+	arr_w.forEach((element,index,array) => {total_w[index] = array[index][0]*array[index][1]});
+	while(total_l.length !== 1){total_l[0]+=total_l[total_l.length-1];total_l.length = total_l.length-1}
+	while(total_w.length !== 1){total_w[0]+=total_w[total_w.length-1];total_w.length = total_w.length-1}
+	console.log(total_l+' '+total_w)
+	return (total_l[0] == total_w[0] ? true : false);
+}
+
+
+
+//2
+console.log('________2________');
+
+let allProfit = [
+{
+  costPrice: 32.67,
+  sellPrice: 45.00,
+  inventory: 1200,
+},
+
+{
+  costPrice: 225.89,
+  sellPrice: 550.00,
+  inventory: 100,
+},
+
+{
+  costPrice: 2.77,
+  sellPrice: 7.95,
+  inventory: 8500,
+}
+
+]
+allProfit.forEach((element)=> console.log(Math.round((element.sellPrice-element.costPrice)*element.inventory)))
+
+
+
+//3
+console.log('________3________');
+
+console.log(getTotalPrice([
+  { product: "Milk", quantity: 1, price: 1.50 }
+]))
+
+console.log(getTotalPrice([
+  { product: "Milk", quantity: 1, price: 1.50 },
+  { product: "Cereals", quantity: 1, price: 2.50 }
+]))
+
+console.log(getTotalPrice([
+  { product: "Milk", quantity: 3, price: 1.50 }
+]))
+
+console.log(getTotalPrice([
+  { product: "Milk", quantity: 1, price: 1.50 },
+  { product: "Eggs", quantity: 12, price: 0.10 },
+  { product: "Bread", quantity: 2, price: 1.60 },
+  { product: "Cheese", quantity: 1, price: 4.50 }
+]))
+
+console.log(getTotalPrice([
+  { product: "Chocolate", quantity: 1, price: 0.10 },
+  { product: "Lollipop", quantity: 1, price: 0.20 }
+]))
+
+function getTotalPrice(arr){
+	let total =0;
+	arr.forEach((element) => {total+=element.quantity*element.price})
+	return (Number.isInteger(total) ? total : Number(total.toFixed(1)));
+}
+
+
+//4
+console.log('________4________')
+
+console.log(sumPrimes([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+
+console.log(sumPrimes([2, 3, 4, 11, 20, 50, 71]))
+
+console.log(sumPrimes([]))
+
+function sumPrimes(arr){
+	let total =0;
+	arr.forEach((element,index,array)=> 
+			((element%2!==0 && element%3!==0 && element%5!==0 && element%7!==0 && element%11!==0 &&  element!==1) 
+			|| element===2 || element===3  || element==5 || element==7 || element==11) ? total += element : false )
+	return total
+}
+
+
+//5
+console.log('________5________');
+
+console.log(getVoteCount({ upvotes: 13, downvotes: 0 }))
+
+console.log(getVoteCount({ upvotes: 2, downvotes: 33 }))
+
+console.log(getVoteCount({ upvotes: 132, downvotes: 132 }))
+
+function getVoteCount(votes){
+	return votes.upvotes - votes.downvotes
+}
+
+</script>

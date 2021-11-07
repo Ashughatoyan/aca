@@ -1,0 +1,89 @@
+body{
+  font-size: 17px;
+  font-family:  Arian;
+  background-color: #ecf0f1;
+}
+
+ul li {
+  list-style: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+span{
+  border-radius: 5px;
+  display: inline-block;
+  width: 100%;
+}
+
+span:hover{
+  background: #fff;
+}
+
+span:active{
+  background: #ecf0f1;
+  color: #e74c3c;
+}
+
+@font-face {
+    font-family: Arian;
+    src: url(arnamu.ttf);
+}
+
+.icon_blue{
+  color: #00a8ff;
+  font-size: 18px;
+}
+
+.icon_purple{
+  color: #9c88ff;
+  font-size: 17px;
+}
+
+.icon_gray{
+  color: #353b48;
+  font-size: 16px;
+}
+
+.icon_red{
+  color: #e84118;
+  font-size: 16px;
+}
+
+.material-icons{
+  transform: rotate(0deg);
+  transition: 0.2s;
+}
+
+#first{
+  border-right: 1px solid #bfbabc;
+  min-width: 300px;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+.tex{
+  display: none;
+  overflow: hidden;
+  transition: 1s;
+}
+
+.texi{
+  transform: rotate(-90deg);
+  font-size: 18px;
+}
+
+.tox{
+  width: 200px;
+}
+
+#main_Armenia{
+  width: 300px;
+  padding: 0;
+}
+
+#main_Artsakh{
+  width: 300px;
+  padding: 0;
+}

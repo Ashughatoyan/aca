@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Calculator</title>
+	
+	<style type="text/css">
+		body{
+	color: #2c3e50;
+	font-family: 'Montserrat', sans-serif;
+	color: #1C1C1C;
+	background-color: #ecf0f1;
+}
+
+textarea{
+	font-family: 'Montserrat', sans-serif;
+	background-color:  #1C1C1C;
+	text-align: right;
+	vertical-align: text-bottom;
+	width: 98.6%;
+	height: 100px;
+	resize: none;
+	font-size: 40px;
+	border: none;
+	outline: none;
+	color: #fff;
+}
+
+button{
+	font-family: 'Montserrat', sans-serif;
+	font-size: 30px;
+	border: none;
+	background-color: #dddddd;
+	width: 24.7%;
+	height: 72px;
+	margin-right: -3px;
+	cursor: pointer;
+}
+
+button:active{
+	background-color: #2c3e50;
+}
+
+.orang{
+	background-color: #FF9500;
+	color: #fff;
+}
+
+.orang: activ{
+	background-color: #2c3e50;
+}
+
+.silver{
+	background-color: #D4D4D2;"
+}
+
+.silver: activ{
+	background-color: #2c3e50;
+}
+
+.stroke{
+	margin-bottom:1px;
+}
+	</style>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div style="width: 300px;  position: relative;top: 100px;left: 50%;margin-left: -150px;background:#000;">
+	<textarea id='result'></textarea>
+	<div class="stroke">
+		<button id="ac" class='silver'>AC</button>
+		<button id="plusorminus" class='silver'>+/-</button>
+		<button id="procent" class='silver'>%</button>
+		<button id="divide" class='orang'>/</button>
+	</div>
+
+	<div class="stroke">
+		<button id="7">7</button>
+		<button id="8">8</button>
+		<button id="9">9</button>
+		<button id="X" class='orang'>X</button>
+	</div>
+
+	<div class="stroke">
+		<button id="4">4</button>
+		<button id="5">5</button>
+		<button id="6">6</button>
+		<button id="-" class='orang'>-</button>
+	</div>
+
+	<div class="stroke">
+		<button id="1">1</button>
+		<button id="2">2</button>
+		<button id="3">3</button>
+		<button id="+" class='orang'>+</button>
+	</div>
+
+	<div class="stroke">
+		<button id="0" style="width:49.7%;padding-right: 79px;">0</button>
+		<button id="dot">.</button>
+		<button id="equivalent" class='orang'>=</button>
+	</div>
+
+</div>
+
+<script type="text/javascript">
+	
+let todo = new Array(3).fill(undefined)
+for(let i=0;i<document.getElementsByTagName('button').length;i++){
+	document.getElementsByTagName('button')[i].addEventListener('click' , (e) => {
+	 	let change = (must_add_to_document) => {document.getElementById('result').value += must_add_to_document}
+	 	let stroke = document.getElementById('result').value;
+	 	let equivalent = (todo) => 
+	 	{
+	 		switch(todo[1]){
+	 			case('+'):
+	 			return parseFloat(todo[0]) + parseFloat(todo[2]);
+	 			break;
+	 			case('-'):
+	 			return parseFloat(todo[0]) - parseFloat(todo[2]);
+	 			break;
+	 			case('X'):
+	 			return parseFloat(todo[0]) * parseFloat(todo[2]);
+	 			break;
+	 			case('/'):
+	 			return parseFloat(todo[0]) / parseFloat(todo[2]);
+	 			break;
+	 			case('%'):
+	 			return parseFloat(todo[0]) % parseFloat(todo[2]);
+	 			break;
+	 		}
+	 	}
+		switch(true){
+			case(!isNaN(Number(e.target.id))):
+			change(e.target.id);
+			
+			break;
+			case(e.target.id === 'plusorminus' && stroke.length !== 0):
+			document.getElementById('result').value = stroke*-1;
+			break;
+			case(e.target.id === 'divide'):
+			if(stroke.length !== 0 && todo[0] === undefined){todo[0]=stroke;todo[1]='/';document.getElementById('result').value=''}
+			break;
+			case(e.target.id === 'X'):
+			if(stroke.length !== 0 && todo[0] === undefined){todo[0]=stroke;todo[1]='X';document.getElementById('result').value=''};;
+			break;
+			case(e.target.id ===  '-'):
+			if(stroke.length !== 0 && todo[0] === undefined){todo[0]=stroke;todo[1]='-';document.getElementById('result').value=''};
+			
+			break;
+			case(e.target.id ===  '+' && todo[0] === undefined):
+			if(stroke.length !== 0){todo[0]=stroke;todo[1]='+';document.getElementById('result').value=''};
+			
+			break;
+			case(e.target.id === 'procent'):
+			if(stroke.length !== 0 && todo[0] === undefined){todo[0]=stroke;todo[1]='%';document.getElementById('result').value=''}
+			break;
+			case(e.target.id === 'ac'):
+			todo[0]=undefined;todo[1]=undefined;document.getElementById('result').value='';
+			
+			break;
+			case(e.target.id === 'dot' && !stroke.split('').includes('.')):
+			stroke.length === 0 ? document.getElementById('result').value = '0.' : change('.');
+			break;
+			case(e.target.id === 'equivalent'):
+			if(todo[0]!==undefined && todo[1]!==undefined && stroke.length!==0){
+				todo[2]=stroke;
+				document.getElementById('result').value = equivalent(todo);
+				console.log(todo);
+				todo.fill(undefined);
+			}
+			break;
+		}
+	})
+}
+
+</script>
+
+</body>
+</html>
